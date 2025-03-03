@@ -2,23 +2,36 @@
 pragma solidity ^0.8.13;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Counter} from "../src/Counter.sol";
+import {DeployFundMe} from "../script/DeployFundMe.s.sol";
+import {FundMe} from "../src/FundMe.sol";
 
 contract FundMeTest is Test {
-    Counter public counter;
+    FundMe public fundMe;
+    uint256 number = 1;
 
     function setUp() public {
-        counter = new Counter();
-        counter.setNumber(0);
+        // me -> FundMeTest -> FundMe the owner of FundMe is the test contract
+        DeployFundMe deployFundMe = new DeployFundMe();
+        fundMe = deployFundMe.run();
     }
 
-    function test_Increment() public {
-        counter.increment();
-        assertEq(counter.number(), 1);
+    function testDemo() public {
+        console.log(number);
+        assertEq(number, 1);
     }
 
-    function testFuzz_SetNumber(uint256 x) public {
-        counter.setNumber(x);
-        assertEq(counter.number(), x);
+    function testMinimumDollarIsFive() public {
+        assertEq(fundMe.MINIMUM_USD(), 5e18);
+    }
+
+    function testOwnerIsMsgSender() public {
+        console.log(fundMe.i_owner());
+        console.log(msg.sender);
+        assertEq(fundMe.i_owner(), address(msg.sender));
+    }
+
+    function testPriceFeedVersionAccurate() public {
+        uint256 version = fundMe.getVersion();
+        assertEq(version, 4);
     }
 }
