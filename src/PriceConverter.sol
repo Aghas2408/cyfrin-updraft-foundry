@@ -26,4 +26,8 @@ library PriceConverter {
     }
 }
 
+// foundryup  for updating the foundry
+// forge init for creating empty forge project
+// forge build for compiling the the contracts
+
 // forge install smartcontractkit/chainlink-brownie-contracts@1.1.1 for installing specific version
