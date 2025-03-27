@@ -29,5 +29,9 @@ library PriceConverter {
 // foundryup  for updating the foundry
 // forge init for creating empty forge project
 // forge build for compiling the the contracts
-
+// forge create Counter --interactive --broadcast for deploying contract (broadcast for executing transaction)
+// forge script script/Counter.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --private-key 0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6    for executing script on specific chain with specific address
+//  cast --to-base 0x32e26 dec   for converting for hexidecimal to decimal
+// cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "increment()" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80  for sending the transaction
+// cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()" --rpc-url $RPC_URL --private-key $PRIVATE_KEY    for calling the blockchain like view or pure functions
 // forge install smartcontractkit/chainlink-brownie-contracts@1.1.1 for installing specific version
