@@ -13,6 +13,7 @@ contract FundMeTest is Test {
     uint256 number = 1;
 
     function setUp() public {
+        number = 2;
         // me -> FundMeTest -> FundMe the owner of FundMe is the test contract
         DeployFundMe deployFundMe = new DeployFundMe();
         fundMe = deployFundMe.run();
@@ -21,7 +22,7 @@ contract FundMeTest is Test {
 
     function testDemo() public {
         console.log(number);
-        assertEq(number, 1);
+        assertEq(number, 2);
     }
 
     function testMinimumDollarIsFive() public {
