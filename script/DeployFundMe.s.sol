@@ -9,10 +9,11 @@ contract DeployFundMe is Script {
     function setUp() public {}
 
     function run() public returns (FundMe) {
+        //Mock
         HelperConfig helperConfig = new HelperConfig();
         address ethUsdPriceFeed = helperConfig.activeNetworkConfig();
 
-        vm.startBroadcast();
+        vm.startBroadcast(); // 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38 the default address for start broadcast
         FundMe fundMe = new FundMe(ethUsdPriceFeed);
         vm.stopBroadcast();
         return fundMe;
